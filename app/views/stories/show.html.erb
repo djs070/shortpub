@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @story.title %></h1>
+
+<p>
+  by <%= link_to @story.author.name, @story.author %> |
+  <%= link_to 'Edit', edit_story_path(@story) %> |
+  <% if current_user.favourites(@story).length > 0 %>
+  <%= link_to 'Remove from favourites', Favourite.find_by(user_id: current_user, story_id: @story), method: :delete, data: { confirm: 'Remove from favourites?' } %>
+  <% else %>
+    <%= link_to 'Add to favourites', favourites_path(user_id: current_user, story_id:@story), method: :post %>
+  <% end %>
+</p>
+
+<p>
+  <%= simple_format @story.body %>
+</p>

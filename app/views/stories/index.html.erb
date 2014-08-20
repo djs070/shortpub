@@ -1,0 +1,17 @@
+<h1 class="page-title">Listing stories</h1>
+
+<% @stories.each do |story| %>
+  <section class="story-list-item">
+    <h2><%= story.title %></h2>
+    <p>by <%= link_to story.author.name, story.author %></p>
+    <p>
+      <%= link_to 'Read', story %> |
+      <%= link_to 'Edit', edit_story_path(story) %> |
+      <%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  </section>
+<% end %>
+
+<br><br>
+
+<%= link_to 'New Story', new_story_path %>

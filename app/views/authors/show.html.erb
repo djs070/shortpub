@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @author.name %></h1>
+
+<p>
+  <%= @author.description %>
+</p>
+
+<p>Member since <%= @author.created_at.strftime('%F') %></p>
+
+<%= link_to 'Edit profile', edit_author_path(@author) %>
+
+<br><br>
+
+<h4><%= @author.name %>'s Stories:</h4>
+
+<% if @author.stories.length > 0 %>
+  <% @author.stories.each do |story| %>
+<%= link_to story.title, story %>
+  <% end %>
+<% else %>
+  No stories
+<% end %>

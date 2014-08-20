@@ -1,0 +1,7 @@
+  <div class="row">
+    <h3>Latest stories</h3>
+    
+    <% Story.all.order("id desc").limit(5).each do |story| %>
+      <%= link_to story.title, story %> by <%= link_to story.author.name, story.author %>
+    <% end %>
+  </div>  

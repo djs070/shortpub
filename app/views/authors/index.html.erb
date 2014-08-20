@@ -1,0 +1,28 @@
+<h1 class="page-title">Listing authors</h1>
+
+<div class="list-authors">
+  <% @authors.each do |author| %>
+
+    <section class="author">
+      <h2 class="author--name"><%= author.name %></h2>
+
+      <div class="author--description">
+        <%= author.description %>
+      </div>
+
+      <div class="author--actions">
+        <br>
+        <%= link_to 'Show', author %>
+        <%= link_to 'Edit', edit_author_path(author) %>
+        <%= link_to 'Delete', author, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </section>
+
+  <% end %>
+</div>
+
+<br><br>
+
+<div class="new-author">
+  <%= link_to 'Add a new author', new_author_path, class: "btn" %>
+</div>
